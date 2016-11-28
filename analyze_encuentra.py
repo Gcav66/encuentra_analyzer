@@ -9,7 +9,7 @@ import pandas as pd
 #   import matplotlib.pyplot as plt
 
 def read_data(myFile):
-    df = pd.read_excel(myFile)
+    df = pd.read_csv(myFile)
     cdf = df.dropna()
     return cdf
     

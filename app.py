@@ -55,7 +55,7 @@ def select():
 	print type(car)
 	#year = session.get('year', None)
 	oform = OtherForm()
-	oform.year.choices = [(y, y) for y in df[df.trimmed_name == car].clean_year.unique()] or []
+	oform.year.choices = [(y, y) for y in df[df.trimmed_name == car].clean_year.sort_values(ascending=False).unique()] or []
 	oform.car.choices = [(car, car)]
 	if oform.validate():
 		print "valid"
@@ -71,6 +71,6 @@ def select():
 	return render_template("select.html", oform=oform)
 
 if __name__ == "__main__":
-	df = read_and_clean("../encuentro_data_2.xlsx")
+	df = read_and_clean("encuentro_data_final.csv")
 	port = int(os.environ.get("PORT", 5000))
 	app.run(host='0.0.0.0', port=int(port), debug=True)
