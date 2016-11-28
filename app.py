@@ -10,7 +10,7 @@ def create_app():
     return app
 
 app = create_app()
-
+df = read_and_clean("encuentro_data_final.csv")
 """
 @app.route("/", methods=["GET", "POST"])
 def bulk():
@@ -71,6 +71,6 @@ def select():
 	return render_template("select.html", oform=oform)
 
 if __name__ == "__main__":
-	df = read_and_clean("encuentro_data_final.csv")
+	#df = read_and_clean("encuentro_data_final.csv")
 	port = int(os.environ.get("PORT", 5000))
 	app.run(host='0.0.0.0', port=int(port), debug=True)
