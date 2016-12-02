@@ -18,7 +18,7 @@
     <link href="../static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../static/css/cover.css" rel="stylesheet">
+    <link href="../static/css/cover.css" rel="stylesheet" type="text/css">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -64,13 +64,24 @@
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">Value of my {{ myyear }} {{ mycar }}</h1>
-            <p class="lead">Encuentra el valor de su coche</p>
-            <div class="lead">
-              {{ valuation | safe}}
-            </div>
-          </div>
-          
+            <h1 class="cover-heading">Contact Info</h1>
+            <P class="lead">gustafcavanaugh@gmail.com</p>
+            <!--
+            <form action="" method=post>
+              <div class="form-group">
+                <select class="selectpicker" name="carform" id="myform" data-live-search="true">
+                  {% for car in cars %}
+                  <option name="car" data-tokens="ketchup mustard"> {{ car }} </option>
+                  {% endfor %}
+                </select>
+                <select class="selectpicker" name="yearform" id="myform" data-live-search="true">
+                  {% for year in years %}
+                  <option name="year" data-tokens="ketchup mustard">{{ year }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <button type="submit" name='btn' value='value' class="btn btn-default">Value my Car</button>
+            </form>
 
 <!--
           <div class="mastfoot">

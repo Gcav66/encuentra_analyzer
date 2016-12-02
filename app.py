@@ -11,27 +11,7 @@ def create_app():
 
 app = create_app()
 df = read_and_clean("encuentro_data_final.csv")
-"""
-@app.route("/", methods=["GET", "POST"])
-def bulk():
-    if request.method == 'POST':
-        if request.form['btn'] == 'value':
-            car = request.form['carform']
-            year = int(request.form['yearform'])
-            cost_df = total(df, car, year)
-            out_df = cost_df.to_html(classes="table table-hover")
-            return render_template("result.html", mycar=car, myyear=year, valuation=out_df)
-    cars = df['trimmed_name'].unique()
-    cars.sort()
-    #cars = [x for x in cars]
-    form = RegistrationForm()
-    form.car.choices = [(x, x) for x in cars]
-    form.year.choices = [(y, y) for y in df[df.trimmed_name == form.car.data].clean_year.unique()] or []
-    years = df['clean_year'].unique()
-    yrs = [int(x) for x in years]
-    yrs.sort(reverse=True)
-    return render_template("index.html", cars=cars, years=yrs, form=form)
-"""
+
 @app.route("/", methods=["GET", "POST"])
 def bulk():
     cars = df['trimmed_name'].unique()
@@ -69,6 +49,10 @@ def select():
 		out_df = cost_df.to_html(classes="table table-hover")
 		return render_template("result.html", mycar=car, myyear=year, valuation=out_df)
 	return render_template("select.html", oform=oform)
+
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    return render_template("contact.html")
 
 if __name__ == "__main__":
 	#df = read_and_clean("encuentro_data_final.csv")
