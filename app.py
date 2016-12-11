@@ -12,6 +12,7 @@ def create_app():
 app = create_app()
 df = read_and_clean("encuentro_data_final.csv")
 
+"""
 @app.route("/", methods=["GET", "POST"])
 def bulk():
     cars = df['trimmed_name'].unique()
@@ -50,13 +51,13 @@ def select():
 		return render_template("result.html", mycar=car, myyear=year, valuation=out_df)
 	return render_template("select.html", oform=oform)
 
-
+"""
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
     return render_template("contact.html")
 
 
-@app.route("/test", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def test():
     cars = df['trimmed_name'].unique()
     cars.sort()
@@ -79,7 +80,7 @@ def show_car(comp_car):
 	#if oform.validate_on_submit():
 		print oform.errors	
 		year = oform.year.data
-		#year = int(float(year))
+		year = int(float(year))
 		#cost_df = total(df, car, year)
 		#out_df = cost_df.to_html(classes="table table-hover")
 		return redirect(url_for("show_result", mycar=comp_car, myyear=year))
@@ -88,7 +89,6 @@ def show_car(comp_car):
 @app.route("/<mycar>/<myyear>", methods=["GET", "POST"])
 def show_result(mycar, myyear):
 	car = str(session.get('car', None))
-	print "My car is {}".format(car)
 	cost_df = total(df, car, int(float(myyear)))
 	out_df = cost_df.to_html(classes="table table-hover")
 	return render_template("result.html", mycar=car, myyear=myyear, valuation=out_df)
