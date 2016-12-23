@@ -12,6 +12,7 @@ def create_app():
 app = create_app()
 df = read_and_clean("encuentro_data_final.csv")
 
+#New Comment
 """
 @app.route("/", methods=["GET", "POST"])
 def bulk():
